@@ -1,3 +1,2 @@
-require("LazyClone")
-require("Plugs")
+require("config.lazy")
 
