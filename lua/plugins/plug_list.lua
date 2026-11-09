@@ -6,13 +6,15 @@ return {
   { "folke/which-key.nvim", priority = 500 },
   
   -- 主题
-  {
-    "folke/tokyonight.nvim",
-  },
+  { "folke/tokyonight.nvim", },
 
   -- 状态栏
-  {
-    'nvim-lualine/lualine.nvim',
-  },
+  { "nvim-lualine/lualine.nvim", },
+
+  -- 文件树
+  { "nvim-tree/nvim-tree.lua", },
+
+  -- 图标
+  { "nvim-tree/nvim-web-devicons", }
 
 }
