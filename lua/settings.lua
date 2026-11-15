@@ -8,6 +8,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
 	end,
 })
 
+-- 开启持久化撤销历史
+vim.opt.undofile = true
+
+-- （可选）集中存放撤销文件，避免 .un~ 文件散落在你的项目目录里
+vim.opt.undodir = vim.fn.expand("~/.data/nvim/undo")
+
 -- 行号
 o.number = true
 

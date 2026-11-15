@@ -28,6 +28,26 @@ k("n", "<leader>N", ":nohl<CR>", { desc = "取消高亮" }, opts)
 -- NvimTreeOpen
 k("n", "<leader>n", ":NvimTreeOpen<CR>", opts)
 
+-- undo tree
+vim.keymap.set("n", "<leader>u", "<cmd>Atone toggle<CR>", { desc = "Undo Tree" })
+
+-- autopairs
+vim.keymap.set("n", "<leader>(", function()
+	local ok, autopairs = pcall(require, "nvim-autopairs")
+	if not ok then
+		print("autopairs not available")
+		return
+	end
+
+	if autopairs.state.disabled then
+		autopairs.enable()
+		print("autopairs on")
+	else
+		autopairs.disable()
+		print("autopairs off")
+	end
+end, { desc = "Toggle Autopairs" })
+
 -- formatter
 k({ "n", "v" }, "<leader>f", function()
 	require("conform").format({ async = true, lsp_format = "fallback" })
@@ -40,7 +60,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "<leader>r", function()
 			vim.cmd("write")
 			local file = vim.fn.shellescape(vim.fn.expand("%"))
-			vim.cmd("!python3 " .. file)
+			vim.cmd("!python " .. file)
 		end, { buffer = ev.buf, desc = "运行" })
 	end,
 })

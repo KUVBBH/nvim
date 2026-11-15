@@ -27,6 +27,9 @@ return {
 	-- 括号颜色
 	{ "HiPhish/rainbow-delimiters.nvim" },
 
+	-- 撤销树
+	{ "XXiaoA/atone.nvim" },
+
 	-- LSP
 	{
 		"mason-org/mason-lspconfig.nvim",
