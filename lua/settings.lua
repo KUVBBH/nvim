@@ -1,5 +1,13 @@
 local o = vim.opt
 
+-- 取消自动注释
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+
 -- 行号
 o.number = true
 

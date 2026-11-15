@@ -20,7 +20,7 @@ return {
 	-- 语法高亮
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
+		-- lazy = false,
 		build = ":TSUpdate",
 	},
 
@@ -30,6 +30,7 @@ return {
 	-- LSP
 	{
 		"mason-org/mason-lspconfig.nvim",
+		ft = { "lua", "python", "css", "html" },
 		opts = {},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
@@ -38,6 +39,7 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+		ft = { "lua", "python", "css", "html" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -47,5 +49,16 @@ return {
 			require("cmp-config") -- 调用单独的配置文件
 		end,
 	},
-	{ "stevearc/conform.nvim" },
+	-- 格式化
+	{ "stevearc/conform.nvim", ft = { "lua", "python", "css", "html" } },
+
+	-- 括号补全
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true, -- 默认配置即可满足日常需求
+		opts = {
+			check_ts = true, -- 启用 Treesitter 支持，避免在字符串或注释中误触发
+		},
+	},
 }
