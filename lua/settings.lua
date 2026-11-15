@@ -27,4 +27,11 @@ o.signcolumn = "yes"
 
 o.hlsearch = true
 
+-- 开启折行
+o.wrap = true 
 
+-- 在单词边界折行，而不是在单词中间截断
+o.linebreak = true
+
+-- 折行后的部分保持缩进（看代码更舒服)
+o.breakindent = true  
