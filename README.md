@@ -40,3 +40,8 @@ vim.lsp.enable("pyright")
 
 - RUST`export PATH="$HOME/.cargo/bin:$PATH"`
 - MASON`export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"`
+
+
+#### Termux
+
+LUA`pkg install lua-language-server`
