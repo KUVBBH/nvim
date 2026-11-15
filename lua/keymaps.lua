@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- vim.g.maplocalleader = " "
 
 local k = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -29,11 +29,13 @@ k({ "n", "v" }, "<leader>f", function()
 end, { desc = "Format buffer" })
 
 -- python
-vim.keymap.set("n", "<LocalLeader>r", function()
-	vim.cmd("write")
-	local file = vim.fn.shellescape(vim.fn.expand("%"))
-	vim.cmd("!python3 " .. file)
-end, {
-	buffer = true,
-	desc = "运行",
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "python",
+	callback = function(ev)
+		vim.keymap.set("n", "<leader>r", function()
+			vim.cmd("write")
+			local file = vim.fn.shellescape(vim.fn.expand("%"))
+			vim.cmd("!python3 " .. file)
+		end, { buffer = ev.buf, desc = "运行" })
+	end,
 })
