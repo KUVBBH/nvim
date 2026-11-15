@@ -22,3 +22,8 @@ k("n", "<leader>nh", ":nohl<CR>", opts)
 
 -- NvimTreeOpen
 k("n", "<leader>n", ":NvimTreeOpen<CR>", opts)
+
+-- formatter
+k({ "n", "v" }, "<leader>f", function()
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format buffer" })

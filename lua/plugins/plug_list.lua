@@ -47,4 +47,5 @@ return {
 			require("cmp-config") -- 调用单独的配置文件
 		end,
 	},
+	{ "stevearc/conform.nvim" },
 }
