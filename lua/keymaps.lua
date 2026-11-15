@@ -14,11 +14,16 @@ k("n", "<leader>q", ":wq<CR>", { desc = "保存并退出" }, opts)
 -- 退出
 k("n", "<leader>!", ":q!<CR>", { desc = "退出" }, opts)
 
+-- buffer切换
+k("n", "<leader><right>", ":bnext<CR>", { desc = "下一个buffer" }, opts)
+k("n", "<leader><left>", ":bprevious<CR>", { desc = "上一个buffer" }, opts)
+k("n", "<leader>b", ":bd<CR>", { desc = "关闭buffer" }, opts)
+
 -- 保存
 k("n", "<leader><leader>", ":w<CR>", { desc = "保存" }, opts)
 
 -- 取消高亮
-k("n", "<leader>nh", ":nohl<CR>", { desc = "取消高亮" }, opts)
+k("n", "<leader>N", ":nohl<CR>", { desc = "取消高亮" }, opts)
 
 -- NvimTreeOpen
 k("n", "<leader>n", ":NvimTreeOpen<CR>", opts)

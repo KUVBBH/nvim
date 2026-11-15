@@ -61,4 +61,10 @@ return {
 			check_ts = true, -- 启用 Treesitter 支持，避免在字符串或注释中误触发
 		},
 	},
+
+	--缓冲区
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+
+	-- git提示
+	{ "lewis6991/gitsigns.nvim" },
 }
