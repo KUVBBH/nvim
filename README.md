@@ -4,7 +4,7 @@
 - Termux字体文件位置`~/.termux/`
 
 #### LSP
-'''lua
+```lua
 -- 配置 pyright（注意：把 cmd 路径换成你 Mason 的绝对路径）
 vim.lsp.config("pyright", {
 	cmd = { vim.fn.expand("pyright-langserver"), "--stdio" },
@@ -32,7 +32,7 @@ vim.lsp.config("pyright", {
 
 -- 启用 pyright
 vim.lsp.enable("pyright")
-'''
+```
 
 
 #### 环境变量 > `.bashrc`
