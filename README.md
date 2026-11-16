@@ -37,9 +37,13 @@ vim.lsp.enable("pyright")
 
 #### 环境变量 > `.bashrc`
 
+```bashrc
 
-- RUST`export PATH="$HOME/.cargo/bin:$PATH"`
-- MASON`export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"`
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$PATH:$HOME/go/bin"
+export OPENAI_API_KEY="KEY"
+```
 
 
 #### Termux

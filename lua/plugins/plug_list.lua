@@ -80,4 +80,10 @@ return {
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 	},
+
+	-- 翻译
+	{
+		"noir4y/comment-translate.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 }

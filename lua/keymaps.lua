@@ -29,10 +29,22 @@ k("n", "<leader>N", ":nohl<CR>", { desc = "取消高亮" }, opts)
 k("n", "<leader>n", ":NvimTreeOpen<CR>", opts)
 
 -- undo tree
-vim.keymap.set("n", "<leader>u", "<cmd>Atone toggle<CR>", { desc = "Undo Tree" })
+k("n", "<leader>u", "<cmd>Atone toggle<CR>", { desc = "Undo Tree" })
+
+-- 跳转到定义（Go to Definition）
+k("n", "gd", vim.lsp.buf.definition, { desc = "跳转到定义" })
+
+-- 跳转到声明（Go to Declaration，Python 中通常和定义一样）
+k("n", "gD", vim.lsp.buf.declaration, { desc = "跳转到声明" })
+
+-- 查找函数被引用的地方（Find References）
+k("n", "gr", vim.lsp.buf.references, { desc = "查找引用" })
+
+-- 重命名光标下的变量或函数（全项目生效）
+k("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP 重命名符号" })
 
 -- autopairs
-vim.keymap.set("n", "<leader>(", function()
+k("n", "<leader>(", function()
 	local ok, autopairs = pcall(require, "nvim-autopairs")
 	if not ok then
 		print("autopairs not available")
@@ -57,7 +69,7 @@ end, { desc = "Format buffer" })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "python",
 	callback = function(ev)
-		vim.keymap.set("n", "<leader>r", function()
+		k("n", "<leader>R", function()
 			vim.cmd("write")
 			local file = vim.fn.shellescape(vim.fn.expand("%"))
 			vim.cmd("!python " .. file)
