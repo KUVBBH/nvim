@@ -86,4 +86,13 @@ return {
 		"noir4y/comment-translate.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
+
+	-- codecompanion.nvim
+	{
+		"olimorris/codecompanion.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }

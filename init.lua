@@ -1,7 +1,8 @@
+vim.g.ai_list = require("ai-list")
 require("settings")
 require("keymaps")
 require("config.lazy")
-
+print(vim.g.ai_list)
 -- 插件设置
 require("lazyvim-zh")
 require("lualine-config")
