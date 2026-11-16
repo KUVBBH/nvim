@@ -3,6 +3,7 @@ require("keymaps")
 require("config.lazy")
 
 -- 插件设置
+require("lazyvim-zh")
 require("lualine-config")
 require("nvim-tree-config")
 require("treesitter-config")

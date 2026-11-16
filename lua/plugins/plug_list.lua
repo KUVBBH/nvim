@@ -1,9 +1,9 @@
 return {
 	-- 中文帮助文档
-	{ "yianwillis/vimcdoc", priority = 1000 },
+	-- { "yianwillis/vimcdoc", priority = 1000 },
 
 	-- 按键提示
-	{ "folke/which-key.nvim", priority = 500 },
+	{ "folke/which-key.nvim", priority = 10000 },
 
 	-- 主题
 	{ "folke/tokyonight.nvim" },
