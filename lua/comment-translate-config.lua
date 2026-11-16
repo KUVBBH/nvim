@@ -1,3 +1,4 @@
+local llm_settings = require("llm-config")
 require("comment-translate").setup({
 	target_language = "zh", -- 翻译目标语言
 	translate_service = "llm", -- 翻译引擎：使用大语言模型
@@ -24,11 +25,5 @@ require("comment-translate").setup({
 	},
 
 	-- 大模型 (LLM) 接口配置
-	llm = {
-		provider = "openai",
-		endpoint = "https://open.bigmodel.cn/api/paas/v4/chat/completions",
-		model = "glm-4-flash",
-		api_key = vim.env.OPENAI_API_KEY,
-		timeout = 60,
-	},
+	llm = llm_settings["zhipu"],
 })
