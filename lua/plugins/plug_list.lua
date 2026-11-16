@@ -70,4 +70,14 @@ return {
 
 	-- git提示
 	{ "lewis6991/gitsigns.nvim" },
+	-- telescope
+	{
+		"nvim-telescope/telescope.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			-- optional but recommended
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		},
+	},
 }

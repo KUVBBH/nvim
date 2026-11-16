@@ -45,3 +45,4 @@ vim.lsp.enable("pyright")
 #### Termux
 
 LUA`pkg install lua-language-server`
+telescope`pkg install ripgrep`
