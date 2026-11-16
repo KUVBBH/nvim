@@ -9,6 +9,11 @@ local configs = {
 		api_key = vim.env.ZHIPU_API_KEY or "你的默认智谱Key",
 		timeout = 60,
 	},
+	zhipu_codecompanion = {
+		endpoint = "https://open.bigmodel.cn/api/paas/v4",
+		model = "glm-4-flash",
+		api_key = vim.env.ZHIPU_API_KEY,
+	},
 
 	-- 配置 2：DeepSeek
 	-- deepseek = {
