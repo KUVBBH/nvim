@@ -25,5 +25,5 @@ require("comment-translate").setup({
 	},
 
 	-- 大模型 (LLM) 接口配置
-	llm = llm_settings["zhipu"],
+	llm = llm_settings["zhipu_comment"],
 })

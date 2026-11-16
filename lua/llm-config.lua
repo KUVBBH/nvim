@@ -2,7 +2,7 @@
 
 local configs = {
 	-- 配置 1：智谱 GLM
-	zhipu = {
+	zhipu_comment = {
 		provider = "openai",
 		endpoint = "https://open.bigmodel.cn/api/paas/v4/chat/completions",
 		model = "glm-4-flash",
@@ -11,22 +11,22 @@ local configs = {
 	},
 
 	-- 配置 2：DeepSeek
-	deepseek = {
-		provider = "openai",
-		endpoint = "https://api.deepseek.com/v1/chat/completions",
-		model = "deepseek-chat",
-		api_key = vim.env.DEEPSEEK_API_KEY or "你的默认DeepSeekKey",
-		timeout = 60,
-	},
+	-- deepseek = {
+	-- 	provider = "openai",
+	-- 	endpoint = "https://api.deepseek.com/v1/chat/completions",
+	-- 	model = "deepseek-chat",
+	-- 	api_key = vim.env.DEEPSEEK_API_KEY or "你的默认DeepSeekKey",
+	-- 	timeout = 60,
+	-- },
 
-	-- 配置 3：本地 Ollama 或其它 OpenAI 兼容接口
-	local_llm = {
-		provider = "openai",
-		endpoint = "http://localhost:11434/v1/chat/completions",
-		model = "qwen2.5-coder",
-		api_key = "ollama", -- 本地通常不需要 key
-		timeout = 120,
-	},
+	-- -- 配置 3：本地 Ollama 或其它 OpenAI 兼容接口
+	-- local_llm = {
+	-- 	provider = "openai",
+	-- 	endpoint = "http://localhost:11434/v1/chat/completions",
+	-- 	model = "qwen2.5-coder",
+	-- 	api_key = "ollama", -- 本地通常不需要 key
+	-- 	timeout = 120,
+	-- },
 }
 
 -- 🌟 在这里决定当前使用哪套配置
