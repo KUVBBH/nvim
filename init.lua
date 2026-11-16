@@ -1,4 +1,3 @@
-vim.g.ai_list = require("ai-list")
 require("settings")
 require("keymaps")
 require("config.lazy")

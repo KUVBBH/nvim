@@ -24,5 +24,5 @@ require("comment-translate").setup({
 	},
 
 	-- 大模型 (LLM) 接口配置
-	llm = vim.g.ai_list.zhipu_comment,
+	llm = require("ai-list").comment.zhipu,
 })

@@ -10,9 +10,7 @@ vim.api.nvim_create_autocmd("User", {
 			return
 		end
 
-		-- 2. 读取全局配置 (确保 vim.g.ai_list 已加载)
-		local ai_list = vim.g.ai_list
-		local config = ai_list and ai_list.zhipu_codecompanion
+		local config = require("ai-list").codecompanion.zhipu
 
 		if not config or not config.endpoint then
 			vim.notify("未在 ai-list 中找到有效的 zhipu_codecompanion 配置", vim.log.levels.ERROR)
