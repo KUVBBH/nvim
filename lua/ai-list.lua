@@ -17,6 +17,11 @@ local configs = {
 			model = "glm-4-flash",
 			api_key = vim.env.ZHIPU_API_KEY,
 		},
+		deepseek = {
+			endpoint = "https://api.deepseek.com",
+			model = "deepseek-flash",
+			api_key = vim.env.DEEPSEEK_API_KEY,
+		},
 	},
 }
 
