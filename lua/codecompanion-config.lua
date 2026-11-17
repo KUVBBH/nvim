@@ -20,6 +20,7 @@ vim.api.nvim_create_autocmd("User", {
 		-- 3. 执行 setup
 		codecompanion.setup({
 			log_level = "DEBUG",
+			rules = require("ai-rules"),
 
 			strategies = {
 				chat = { adapter = "zhipu" },
