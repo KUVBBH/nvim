@@ -19,7 +19,7 @@ local configs = {
 		},
 		deepseek = {
 			endpoint = "https://api.deepseek.com",
-			model = "deepseek-flash",
+			model = "deepseek-v4-flash",
 			api_key = vim.env.DEEPSEEK_API_KEY,
 		},
 	},
