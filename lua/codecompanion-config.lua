@@ -169,9 +169,22 @@ vim.api.nvim_create_autocmd("User", {
 								"[CodeCompanion] 已加载 " .. #parts .. " 个规则文件",
 								vim.log.levels.INFO
 							)
-
 							local custom = table.concat(parts, "\n\n")
-							return ctx.default_system_prompt .. "\n\n" .. custom
+							local env = "\n\n## Environment\n- OS: "
+								.. ctx.os
+								.. "\n- Neovim: "
+								.. ctx.nvim_version
+								.. "\n- Date: "
+								.. ctx.date
+								.. "\n- CWD: "
+								.. ctx.cwd
+								.. "\n- Project: "
+								.. (ctx.project_root or "none")
+								.. "\n- Adapter: "
+								.. (ctx.adapter and ctx.adapter.name or "unknown")
+								.. "\n- Lang: "
+								.. ctx.language
+							return ctx.default_system_prompt .. "\n\n" .. custom .. env
 						end,
 						-- 如果你想保留默认提示词并追加内容，用函数形式:
 						-- system_prompt = function(ctx)
