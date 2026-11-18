@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("User", {
 				-- 日志级别，排查问题时设为 "DEBUG" 或 "TRACE"
 				-- 可选值: "ERROR"、"WARN"、"INFO"、"DEBUG"、"TRACE"
 				-- 日志文件位于: ~/.local/state/nvim/codecompanion.log
-				log_level = "DEBUG",
+				log_level = "WARN",
 
 				-- 日期格式，用于 system prompt 中的 ${date} 变量
 				-- 默认值: "%A, %d %B %Y"
