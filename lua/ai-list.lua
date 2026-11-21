@@ -13,8 +13,8 @@ local configs = {
 			provider = "openai",
 			endpoint = "https://api.deepseek.com/chat/completions",
 			model = "deepseek-v4-flash",
-			api_key = vim.env.DEEPSEEK_API_KEY,
-			timeout = 60,
+			api_key = vim.env.DEEPSEEK_API_KEY.FANYI,
+			timeout = 10,
 		},
 	},
 
