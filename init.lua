@@ -1,6 +1,6 @@
+require("config.lazy")
 require("settings")
 require("keymaps")
-require("config.lazy")
 
 -- 插件设置
 require("lazyvim-zh")
