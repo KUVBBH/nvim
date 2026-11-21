@@ -31,13 +31,19 @@ return {
 	{ "XXiaoA/atone.nvim" },
 
 	-- LSP
+	--	{
+	--		"mason-org/mason-lspconfig.nvim",
+	--		ft = { "lua", "python", "css", "html" },
+	--		opts = {},
+	--		dependencies = {
+	--			{ "mason-org/mason.nvim", opts = {} },
+	--			"neovim/nvim-lspconfig",
+	--		},
+	--	},
 	{
-		"mason-org/mason-lspconfig.nvim",
-		ft = { "lua", "python", "css", "html" },
-		opts = {},
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
+			"hrsh7th/cmp-nvim-lsp",
 		},
 	},
 	{
