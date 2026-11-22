@@ -13,14 +13,58 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$PATH:$HOME/go/bin"
 export ZHIPU_API_KEY=""
 export DEEPSEEK_API_KEY=""
-export OLLAMA_HOST="http://127.0.0.1:11434"""
 ```
 
 
 #### Termux
 
-LUA`pkg install lua-language-server`
-telescope`pkg install ripgrep`
+- LUA`pkg install lua-language-server`
+- telescope`pkg install ripgrep`
+- ```bash
+
+extra-keys = [\
+    [\
+        {key: '=', popup: '=='}, \
+        {key: '+', popup: '+='}, \
+        {key: '-', popup: '->'}, \
+        {key: '*', popup: '*='}, \
+        {key: '/', popup: 'BACKSLASH'}, \
+        {key: '$', popup: '&'}, \
+        'UP', \
+        'DOWN' \
+    ], \
+    [ \
+        'TAB', \
+        {key: '(', popup: ')'}, \
+        {key: '[', popup: ']'}, \
+        {key: '{', popup: '}'}, \
+        {key: "'", popup: '"'}, \
+        {key: '_', popup: '|'}, \
+        'LEFT', \
+        'RIGHT' \
+    ], \
+    [ \
+        'ESC', \
+        'CTRL', \
+        {key: ':', popup: ';'}, \
+        {key: '#', popup: '.'}, \
+        {key: '!', popup: '?'}, \
+        {key: '<', popup: '^'}, \
+        {key: ',', popup: '`'}, \
+        {key: '>', popup: {key: KEYBOARD, display: '键盘'}} \
+    ] \
+]
+
+
+
+# shortcut.create-session = ctrl + …
+
+# shortcut.next-session = ctrl + _
+
+# shortcut.previous-session = ctrl + ~
+
+
+```
 
 ---
 
