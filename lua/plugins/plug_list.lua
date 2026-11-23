@@ -196,9 +196,6 @@ return {
 					vim.log.levels.ERROR,
 					{ title = "CodeCompanion" }
 				)
-				pcall(function()
-					require("codecompanion").setup({})
-				end)
 			end
 		end,
 	},
