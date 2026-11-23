@@ -3,9 +3,10 @@ local M = {}
 M.rules_dir = vim.fn.stdpath("config") .. "/rules/基础规则"
 
 local force_rule = "【CRITICAL INSTRUCTION - HIGHEST PRIORITY】：无论任务复杂程度如何"
-	.. "（包括编写长代码），你的每一条回复都必须以【📋 任务进度】报告开头"
-	.. "（包含已完成、待办、当前状态）。如果你忽略此规则，直接输出代码或思考，"
-	.. "将被视为回复失败，必须严格无条件执行！\n\n"
+	.. "（包括编写长代码），你的每一条回复都必须以【📋 任务进度】报告结尾\n"
+	.. "（包含已完成、待办、当前状态）。"
+	.. "你的回复必须简短精炼! "
+	.. "以上规则，必须严格无条件执行！\n\n"
 
 local function read_rule_files()
 	local files = vim.fn.glob(M.rules_dir .. "/**/*.md*", false, true)
@@ -28,14 +29,6 @@ end
 function M.build_system_prompt(ctx)
 	local parts, names = read_rule_files()
 	local custom = ""
-
-	-- 👈 改成你想要的那种打印风格
-	if #names > 0 then
-		vim.notify("[CodeCompanion] 成功加载以下规则: " .. table.concat(names, ", "))
-		custom = table.concat(parts, "\n\n") .. "\n\n"
-	else
-		vim.notify("[CodeCompanion] 未在 " .. M.rules_dir .. " 找到 .md 规则文件", vim.log.levels.WARN)
-	end
 
 	local env = (
 		"\n\n## Environment\n- OS: %s\n- Neovim: %s\n- Date: %s\n- CWD: %s"

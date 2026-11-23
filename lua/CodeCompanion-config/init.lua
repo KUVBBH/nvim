@@ -67,6 +67,9 @@ vim.api.nvim_create_autocmd("User", {
 			display = {
 				chat = {
 					window = { layout = "float", width = 0.9, height = 0.85, border = "rounded" },
+					intro_message = #file_names > 0
+							and "已加载规则 :\n" .. table.concat(file_names, ",\n") .. "\n"
+						or "Welcome to CodeCompanion! Press ? for options",
 				},
 			},
 			prompt_library = prompt_library,
