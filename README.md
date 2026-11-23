@@ -13,6 +13,8 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$PATH:$HOME/go/bin"
 export ZHIPU_API_KEY=""
 export DEEPSEEK_API_KEY=""
+# 可选：注释翻译专用 key，不设则回落到 DEEPSEEK_API_KEY
+# export DEEPSEEK_API_KEY_FANYI=""
 ```
 
 
@@ -86,13 +88,12 @@ extra-keys = [\
 └── lua/
     ├── settings.lua             # 原生选项（缩进/行号/撤销文件等）
     ├── keymaps.lua              # 全局键位
-    ├── config/lazy.lua          # lazy.nvim 引导 + leader 设置
-    ├── plugins/plug_list.lua    # 插件清单（唯一安装入口）
+    ├── config/lazy.lua          # lazy.nvim 引导
+    ├── plugins/plug_list.lua    # 插件清单 + 各插件的 lazy 触发方式（唯一安装入口）
     ├── ai-list.lua              # LLM endpoint / api_key / model 单一数据源
-    ├── ai-rules.lua             # 规则组定义示例（当前未被 init.lua 引用）
     ├── lazyvim-zh.lua           # which-key 中文按键说明
     ├── key-help.lua             # <leader>h VIM 速查浮窗
-    ├── lualine-config.lua       # 主题 tokyonight-moon + 状态栏
+    ├── lualine-config.lua       # 状态栏（主题在 plug_list 中切换）
     ├── bufferline-config.lua    # 顶部 buffer 标签
     ├── nvim-tree-config.lua     # 文件树
     ├── treesitter-config.lua    # Treesitter 白名单高亮
@@ -101,9 +102,10 @@ extra-keys = [\
     ├── formatter.lua            # conform.nvim 保存时格式化
     ├── autopairs-config.lua     # 括号自动配对
     ├── atone-config.lua         # 撤销树（左侧面板）
-    ├── telescope-config.lua     # 模糊查找
+    ├── telescope-config.lua     # 模糊查找（快捷键声明在 plug_list 的 keys 里）
     ├── comment-translate-config.lua  # 注释 / 沉浸式翻译
-    ├── codecompanion-config.lua      # AI 对话主体配置
-    └── CodeCompanion-help.lua        # 聊天窗口内 @ # / 速查浮窗
+    ├── CodeCompanion-config/         # AI 对话主体配置（init / adapters / prompts / rules）
+    ├── CodeCompanion-help.lua        # 聊天窗口内 @ # / 速查浮窗
+    └── DEL/                          # 旧的备份配置，未被引用，可删
 ```
 

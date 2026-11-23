@@ -1,19 +1,15 @@
-require("config.lazy")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+-- 启用 Lua 模块缓存，加快启动
+vim.loader.enable()
+
+-- 基础选项与键位必须在插件之前就绪
 require("settings")
 require("keymaps")
 
--- 插件设置
-require("lazyvim-zh")
-require("lualine-config")
-require("nvim-tree-config")
-require("treesitter-config")
-require("lsp-config")
-require("formatter")
-require("bufferline-config")
+require("config.lazy")
+
+-- 与插件无强依赖（或依赖启动即加载的插件）的纯原生模块
 require("key-help")
-require("autopairs-config")
-require("atone-config")
-require("telescope-config")
-require("comment-translate-config")
-require("CodeCompanion-config")
-require("CodeCompanion-help")
+require("lazyvim-zh")

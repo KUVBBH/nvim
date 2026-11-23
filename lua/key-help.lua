@@ -152,15 +152,12 @@ local function show_cheatsheet()
 	-- 创建 buffer
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	vim.api.nvim_buf_set_option(buf, "filetype", "help")
-
-	-- 允许光标移动和滚动
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+	vim.bo[buf].filetype = "help"
+	vim.bo[buf].bufhidden = "wipe"
+	vim.bo[buf].modifiable = false
 
 	-- 【关键修复】计算窗口大小：宽度定死，高度拉到屏幕的 90%
-	local ui = vim.api.nvim_list_uis()[1]
+	local ui = vim.api.nvim_list_uis()[1] or { width = 80, height = 24 }
 	local width = 65
 	-- 高度取屏幕高度的 90%
 	local height = math.floor(ui.height * 0.9)
@@ -182,27 +179,27 @@ local function show_cheatsheet()
 	})
 
 	-- 开启 wrap 防止横向被截断
-	vim.api.nvim_win_set_option(win, "wrap", true)
+	vim.wo[win].wrap = true
 	-- 开启光标行高亮，方便看看到底滚到了哪
-	vim.api.nvim_win_set_option(win, "cursorline", true)
+	vim.wo[win].cursorline = true
 
-	-- 设置浮窗内快捷键
+	-- 设置浮窗内快捷键（按键保持不变）
 	local close_cmd = "<cmd>close<CR>"
-	local opts = { silent = true, noremap = true }
+	local opts = { buffer = buf, silent = true, nowait = true }
 
 	-- 退出键
-	vim.api.nvim_buf_set_keymap(buf, "n", "q", close_cmd, opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "<Esc>", close_cmd, opts)
+	vim.keymap.set("n", "q", close_cmd, opts)
+	vim.keymap.set("n", "<Esc>", close_cmd, opts)
 
-	-- 【新增】滚动键（直接利用原生 vim 命令）
-	vim.api.nvim_buf_set_keymap(buf, "n", "j", "j", opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "k", "k", opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-d>", "<C-d>", opts) -- 半屏向下
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-u>", "<C-u>", opts) -- 半屏向上
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-f>", "<C-f>", opts) -- 全屏向下
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-b>", "<C-b>", opts) -- 全屏向上
-	vim.api.nvim_buf_set_keymap(buf, "n", "G", "G", opts) -- 跳到底部
-	vim.api.nvim_buf_set_keymap(buf, "n", "gg", "gg", opts) -- 跳到顶部
+	-- 滚动键（直接利用原生 vim 命令）
+	vim.keymap.set("n", "j", "j", opts)
+	vim.keymap.set("n", "k", "k", opts)
+	vim.keymap.set("n", "<C-d>", "<C-d>", opts) -- 半屏向下
+	vim.keymap.set("n", "<C-u>", "<C-u>", opts) -- 半屏向上
+	vim.keymap.set("n", "<C-f>", "<C-f>", opts) -- 全屏向下
+	vim.keymap.set("n", "<C-b>", "<C-b>", opts) -- 全屏向上
+	vim.keymap.set("n", "G", "G", opts) -- 跳到底部
+	vim.keymap.set("n", "gg", "gg", opts) -- 跳到顶部
 end
 
 -- 绑定快捷键（比如按 leader + h 触发）

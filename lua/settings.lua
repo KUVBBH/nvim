@@ -1,5 +1,9 @@
 local o = vim.opt
 
+-- netrw 交由 nvim-tree 接管（必须在插件加载前设置）
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- 取消自动注释
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
 	pattern = "*",
@@ -9,10 +13,12 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead", "FileType" }, {
 })
 
 -- 开启持久化撤销历史
-vim.opt.undofile = true
+o.undofile = true
 
--- （可选）集中存放撤销文件，避免 .un~ 文件散落在你的项目目录里
-vim.opt.undodir = vim.fn.expand("~/.data/nvim/undo")
+-- 集中存放撤销文件，避免 .un~ 文件散落在项目目录里（目录必须先存在，否则静默失效）
+local undodir = vim.fn.expand("~/.data/nvim/undo")
+vim.fn.mkdir(undodir, "p")
+o.undodir = undodir
 
 -- 行号
 o.number = true
@@ -26,9 +32,6 @@ o.shiftwidth = 2
 o.softtabstop = 2
 o.autoindent = true
 o.expandtab = true
-
--- 防止包裹
-o.wrap = false
 
 -- 突出显示光标行
 o.cursorline = true
@@ -49,3 +52,9 @@ o.linebreak = true
 
 -- 折行后的部分保持缩进（看代码更舒服)
 o.breakindent = true
+
+-- CursorHold 类事件（LSP 引用高亮）响应更快
+o.updatetime = 300
+
+-- 前缀键等待时间（<leader>f 与 <leader>ff 等存在前缀关系）
+o.timeoutlen = 300

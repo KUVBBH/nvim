@@ -5,7 +5,7 @@ require("comment-translate").setup({
 	-- 自动悬浮翻译配置
 	hover = {
 		enabled = true, -- 开启悬浮窗功能
-		delay = 1500, -- 停留 500 毫秒后触发
+		delay = 1500, -- 光标停留 1500 毫秒后触发
 		auto = true, -- 开启自动触发
 	},
 

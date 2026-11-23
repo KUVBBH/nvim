@@ -1,6 +1,7 @@
 local M = {}
 
 -- 工厂：系统提示 + 用户提示构造器
+-- 注意：context 由 codecompanion 提供（含 code / bufnr / filetype / start_line / end_line）
 local function code_prompt(index, short, desc, sys, build_user)
 	return {
 		strategy = "chat",
@@ -20,9 +21,8 @@ local function code_prompt(index, short, desc, sys, build_user)
 			{
 				role = "user",
 				content = function(context)
-					local input =
-						require("codecompanion.helpers.actions").get_code(context.start_line, context.end_line)
-					return build_user(context, input)
+					context = context or {}
+					return build_user(context, context.code or "")
 				end,
 				opts = { contains_code = true },
 			},

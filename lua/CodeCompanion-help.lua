@@ -381,11 +381,11 @@ local function show_cheatsheet(title, groups)
 
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	vim.api.nvim_buf_set_option(buf, "filetype", "help")
-	vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+	vim.bo[buf].filetype = "help"
+	vim.bo[buf].bufhidden = "wipe"
+	vim.bo[buf].modifiable = false
 
-	local ui = vim.api.nvim_list_uis()[1]
+	local ui = vim.api.nvim_list_uis()[1] or { width = 80, height = 24 }
 	local width = 75
 	local main_height = math.min(#lines + 2, math.floor(ui.height * 0.5))
 	local preview_height = 6
@@ -406,12 +406,12 @@ local function show_cheatsheet(title, groups)
 		title_pos = "center",
 	})
 
-	vim.api.nvim_win_set_option(win, "wrap", true)
-	vim.api.nvim_win_set_option(win, "cursorline", true)
+	vim.wo[win].wrap = true
+	vim.wo[win].cursorline = true
 
 	local preview_buf = vim.api.nvim_create_buf(false, true)
-	vim.api.nvim_buf_set_option(preview_buf, "bufhidden", "wipe")
-	vim.api.nvim_buf_set_option(preview_buf, "modifiable", true)
+	vim.bo[preview_buf].bufhidden = "wipe"
+	vim.bo[preview_buf].modifiable = true
 
 	local preview_win = vim.api.nvim_open_win(preview_buf, false, {
 		relative = "editor",
@@ -424,7 +424,7 @@ local function show_cheatsheet(title, groups)
 		title = " 💡 说明 ",
 		title_pos = "center",
 	})
-	vim.api.nvim_win_set_option(preview_win, "wrap", true)
+	vim.wo[preview_win].wrap = true
 
 	local last_line = -1
 	local hl_ns = vim.api.nvim_create_namespace("cc_preview_hl")
@@ -439,7 +439,7 @@ local function show_cheatsheet(title, groups)
 		local item = line_to_item[current_line]
 		local text = {}
 
-		vim.api.nvim_buf_set_option(preview_buf, "modifiable", true)
+		vim.bo[preview_buf].modifiable = true
 		vim.api.nvim_buf_clear_namespace(preview_buf, hl_ns, 0, -1)
 
 		if item then
@@ -463,7 +463,7 @@ local function show_cheatsheet(title, groups)
 			vim.api.nvim_buf_set_lines(preview_buf, 0, -1, false, text)
 		end
 
-		vim.api.nvim_buf_set_option(preview_buf, "modifiable", false)
+		vim.bo[preview_buf].modifiable = false
 	end
 
 	update_preview()
@@ -484,14 +484,15 @@ local function show_cheatsheet(title, groups)
 	})
 
 	local close_cmd = "<cmd>close<CR>"
-	local opts = { silent = true, noremap = true }
+	-- 按键保持不变，只换成未废弃的 API
+	local opts = { buffer = buf, silent = true, nowait = true }
 
-	vim.api.nvim_buf_set_keymap(buf, "n", "q", close_cmd, opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "<Esc>", close_cmd, opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "j", "j", opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "k", "k", opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-d>", "<C-d>", opts)
-	vim.api.nvim_buf_set_keymap(buf, "n", "<C-u>", "<C-u>", opts)
+	vim.keymap.set("n", "q", close_cmd, opts)
+	vim.keymap.set("n", "<Esc>", close_cmd, opts)
+	vim.keymap.set("n", "j", "j", opts)
+	vim.keymap.set("n", "k", "k", opts)
+	vim.keymap.set("n", "<C-d>", "<C-d>", opts)
+	vim.keymap.set("n", "<C-u>", "<C-u>", opts)
 end
 
 vim.api.nvim_create_autocmd("FileType", {
