@@ -15,8 +15,7 @@ local configs = {
 			provider = "openai",
 			endpoint = "https://api.deepseek.com/chat/completions",
 			model = "deepseek-chat",
-			-- 兼容两种变量名，避免换机器后翻译静默失败
-			api_key = vim.env.DEEPSEEK_API_KEY_FANYI or vim.env.DEEPSEEK_API_KEY,
+			api_key = vim.env.DEEPSEEK_API_KEY_FANYI,
 			timeout = 60,
 		},
 	},
